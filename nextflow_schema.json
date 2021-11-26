@@ -44,6 +44,39 @@
                 }
             }
         },
+        "trimming_options": {
+            "title": "Trimming options",
+            "type": "object",
+            "description": "Options passed to Trimgalore",
+            "default": "",
+            "fa_icon": "fas fa-cut",
+            "properties": {
+                "clip_r1": {
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Number of bases to clip 5-prime in R1 reads.",
+                    "fa_icon": "fas fa-cut"
+                },
+                "clip_r2": {
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Number of bases to clip 5-prime in R2 reads.",
+                    "fa_icon": "fas fa-cut"
+                },
+                "three_prime_clip_r1": {
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Number of bases to clip 3-prime in R1 reads.",
+                    "fa_icon": "fas fa-cut"
+                },
+                "three_prime_clip_r2": {
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Number of bases to clip 5-prime in R2 reads.",
+                    "fa_icon": "fas fa-cut"
+                }
+            }
+        },
         "reference_genome_options": {
             "title": "Reference genome options",
             "type": "object",
@@ -245,6 +278,9 @@
     "allOf": [
         {
             "$ref": "#/definitions/input_output_options"
+        },
+        {
+            "$ref": "#/definitions/trimming_options"
         },
         {
             "$ref": "#/definitions/reference_genome_options"
