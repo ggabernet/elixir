@@ -49,6 +49,7 @@ include { INPUT_CHECK } from '../subworkflows/local/input_check'
 include { FASTQC  } from '../modules/nf-core/modules/fastqc/main'
 include { MULTIQC } from '../modules/nf-core/modules/multiqc/main'
 include { CUSTOM_DUMPSOFTWAREVERSIONS } from '../modules/nf-core/modules/custom/dumpsoftwareversions/main'
+include { TRIMGALORE  } from '../modules/nf-core/modules/trimgalore/main'
 
 /*
 ========================================================================================
@@ -78,6 +79,12 @@ workflow ELIXIRPIPELINE {
         INPUT_CHECK.out.reads
     )
     ch_versions = ch_versions.mix(FASTQC.out.versions.first())
+
+    // MODULE: Trimgalore
+    TRIMGALORE (
+        INPUT_CHECK.out.reads
+    )
+    ch_versions = ch_versions.mix(TRIMGALORE.out.versions.first())
 
     CUSTOM_DUMPSOFTWAREVERSIONS (
         ch_versions.unique().collectFile(name: 'collated_versions.yml')
