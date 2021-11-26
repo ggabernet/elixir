@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release of nf-core/elixirpipeline, created with the [nf-core](https://nf-co.re/) template.
 
+
 ### `Added`
 
 ### `Fixed`
